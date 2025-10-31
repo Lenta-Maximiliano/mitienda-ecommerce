@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap');
+
+/* 🎨 Definimos el theme global */
+:root {
+  /* Colores */
+  --color-primary: #187b68;
+  --color-accent: #F6A623;
+  --color-soft: #F7F7F8;
+  --color-muted: #6B7280;
+  --color-danger: #FF6B6B;
+
+  /*Breakpoints*/
+  --breakpoint-sm: 640px; 
+  --breakpoint-tablet: 700px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-desktop: 1440px;
+
+  /* Tipografía */
+  --font-display: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Bordes y sombras */
+  --radius-lg: 12px;
+  --shadow-card: 0 8px 24px rgba(16,24,40,0.06);
+}
+
+/* 🌙 (opcional) modo oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-soft: #1E1E1E;
+    --color-muted: #9CA3AF;
+  }
+}
+
+/* 🌐 Aplicación global */
+html {
+  font-family: var(--font-body);
+  color: var(--color-muted);
+  background-color: var(--color-soft);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-primary);
+}
