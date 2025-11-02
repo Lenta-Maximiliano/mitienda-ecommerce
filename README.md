@@ -1,3 +1,8 @@
+******************************************************************************************
+***/----/*
+*****************************************************************************************
+
+
 # 🛍️ MiTienda - eCommerce con React
 
 **MiTienda** es una aplicación eCommerce moderna desarrollada con **React**, **Redux Toolkit**, **Tailwind CSS** y **Firebase**.  

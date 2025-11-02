@@ -59,12 +59,22 @@ export default function NavBar() {
 
           {/* Usuario */}
           {!user ? (
-            <Link
-              to="/"
-              className="bg-[var(--color-primary)] text-white text-sm font-medium px-4 py-2 rounded-md hover:opacity-90 transition"
-            >
-              Iniciar sesión
-            </Link>
+            <div>
+              <Link
+                to="/auth/login"
+                className="bg-[var(--color-primary)] text-white text-sm font-medium px-4 py-2 rounded-md hover:opacity-90 transition"
+              >
+                Iniciar sesión
+              </Link>
+              <Link
+                to="/auth/register"
+                className="text-[var(--color-primary)] text-sm font-medium px-4 py-2 hover:underline underline-offset-4"
+              >
+                Crear mi Cuenta
+              </Link>
+            </div>
+            
+            
           ) : (
             <div className="relative">
               <button
