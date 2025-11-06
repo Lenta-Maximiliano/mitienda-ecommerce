@@ -7,6 +7,7 @@ import ProductDetail from "./pages/ProductDetail";
 import Checkout from "./pages/Checkout";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route  path="/auth/login" element={<Login />} />
         <Route path="/auth/register" element={<Register />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
