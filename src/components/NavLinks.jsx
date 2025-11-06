@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
+import AuthControls from "./AuthControls";
 
-export default function NavLinks({ isMobile = false, closeMenu }) {
+export default function NavLinks({ isMobile = false, closeMenu, user, onLogout }) {
   const location = useLocation();
 
   const links = [
@@ -10,11 +11,7 @@ export default function NavLinks({ isMobile = false, closeMenu }) {
   ];
 
   return (
-    <ul
-      className={`${
-        isMobile ? "flex flex-col gap-3 p-4" : "flex items-center gap-8"
-      } font-medium`}
-    >
+    <ul className={`${isMobile ? "flex flex-col gap-3 p-4" : "flex items-center gap-8"} font-medium`}>
       {links.map((link) => {
         const isActive = location.pathname === link.path;
         return (
@@ -22,11 +19,7 @@ export default function NavLinks({ isMobile = false, closeMenu }) {
             <Link
               to={link.path}
               onClick={isMobile && closeMenu ? closeMenu : undefined}
-              className={`transition-colors ${
-                isActive
-                  ? "text-[var(--color-accent)] font-bold"
-                  : "text-[var(--color-text)] hover:text-[var(--color-primary)]"
-              }`}
+              className={`transition-colors block ${isActive ? "text-[var(--color-accent)] font-bold" : "text-[var(--color-text)] hover:text-[var(--color-primary)]"}`}
               aria-current={isActive ? "page" : undefined}
             >
               {link.name}
@@ -34,6 +27,9 @@ export default function NavLinks({ isMobile = false, closeMenu }) {
           </li>
         );
       })}
+
+      {/* Auth controls for mobile */}
+      {isMobile && <AuthControls user={user} isMobile={true} closeMenu={closeMenu} onLogout={onLogout} />}
     </ul>
   );
 }
