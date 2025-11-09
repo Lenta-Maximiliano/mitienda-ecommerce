@@ -27,7 +27,7 @@ export default function NavBar() {
 
         {/* Mobile hamburger */}
         <button aria-label="Abrir menú" aria-expanded={isOpen} className="md:hidden p-2 text-[var(--color-primary)]" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isOpen ? <X className="w-6 h-6 hover:cursor-pointer" /> : <Menu className="w-6 h-6 hover:cursor-pointer" />}
         </button>
 
         {/* Desktop links */}
@@ -37,7 +37,10 @@ export default function NavBar() {
 
         {/* Cart + Auth (desktop) */}
         <div className="flex items-center gap-4">
-          <CartButton />
+          <div className="md:hidden">
+            <CartButton />
+          </div>
+          {user && <div className="hidden md:block"><CartButton /></div>}
           <div className="hidden md:block">
             <AuthControls user={user} onLogout={handleLogout} />
           </div>

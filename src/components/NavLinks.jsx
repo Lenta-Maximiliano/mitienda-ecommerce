@@ -15,7 +15,7 @@ export default function NavLinks({ isMobile = false, closeMenu, user, onLogout }
       {links.map((link) => {
         const isActive = location.pathname === link.path;
         return (
-          <li key={link.path}>
+          <li key={link.path} className="p-1 rounded-md border-2 border-transparent hover:border-[var(--color-primary)] hover:cursor-pointer">
             <Link
               to={link.path}
               onClick={isMobile && closeMenu ? closeMenu : undefined}

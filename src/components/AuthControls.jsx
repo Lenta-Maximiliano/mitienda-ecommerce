@@ -16,12 +16,12 @@ export default function AuthControls({ user, onLogout, isMobile = false, closeMe
       return (
         <>
           <li>
-            <Link to="/auth/login" onClick={() => closeMenu?.()} className="block bg-[var(--color-primary)] text-white px-4 py-2 rounded-md text-center">
+            <Link to="/auth/login" onClick={() => closeMenu?.()} className="block bg-[var(--color-primary)] text-white px-4 py-2 rounded-md text-center border-2 hover:border-[var(--color-primary)] hover:bg-white hover:text-[var(--color-primary)]">
               Iniciar sesión
             </Link>
           </li>
           <li>
-            <Link to="/auth/register" onClick={() => closeMenu?.()} className="block text-[var(--color-primary)] px-4 py-2 text-center hover:underline">
+            <Link to="/auth/register" onClick={() => closeMenu?.()} className="block text-[var(--color-primary)] px-4 py-2 text-center border-2 border-transparent rounded-md hover:underline hover:border-[var(--color-primary)]">
               Crear mi Cuenta
             </Link>
           </li>

@@ -46,7 +46,7 @@ export default function Checkout() {
                   <div className="flex items-center gap-2 sm:gap-3 mt-3 sm:mt-4">
                     <button
                       onClick={() => dispatch(decreaseQuantity(item.id))}
-                      className="w-8 h-8 sm:w-9 sm:h-9 bg-[var(--color-soft)] text-[var(--color-primary)] rounded-full font-bold hover:opacity-80 transition"
+                      className="w-8 h-8 sm:w-9 sm:h-9 bg-[var(--color-soft)] text-[var(--color-primary)] rounded-full font-bold hover:opacity-80 transition hover:cursor-pointer"
                     >
                       -
                     </button>
@@ -55,13 +55,13 @@ export default function Checkout() {
                     </span>
                     <button
                       onClick={() => dispatch(increaseQuantity(item.id))}
-                      className="w-8 h-8 sm:w-9 sm:h-9 bg-[var(--color-soft)] text-[var(--color-primary)] rounded-full font-bold hover:opacity-80 transition"
+                      className="w-8 h-8 sm:w-9 sm:h-9 bg-[var(--color-soft)] text-[var(--color-primary)] rounded-full font-bold hover:opacity-80 transition hover:cursor-pointer"
                     >
                       +
                     </button>
                     <button
                       onClick={() => dispatch(removeFromCart(item.id))}
-                      className="ml-2 sm:ml-4 bg-red-100 text-red-600 px-2 sm:px-3 py-1 rounded-lg font-semibold hover:bg-red-200 transition text-sm sm:text-base"
+                      className="ml-2 sm:ml-4 bg-red-100 text-red-600 px-2 sm:px-3 py-1 rounded-lg font-semibold hover:bg-red-200 transition text-sm sm:text-base hover:cursor-pointer"
                     >
                       Eliminar
                     </button>
@@ -84,12 +84,12 @@ export default function Checkout() {
               <span>Total a pagar:</span>
               <span>${totalPrice.toFixed(2)}</span>
             </div>
-            <button className="w-full py-3 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition mb-3 text-sm md:text-base">
+            <button className="w-full py-3 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition mb-3 text-sm md:text-base hover:cursor-pointer">
               Confirmar compra
             </button>
             <button
               onClick={() => dispatch(clearCart())}
-              className="w-full py-3 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 transition text-sm md:text-base"
+              className="w-full py-3 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 transition text-sm md:text-base hover:cursor-pointer"
             >
               Vaciar carrito
             </button>
@@ -99,94 +99,3 @@ export default function Checkout() {
     </div>
   );
 }
-// import { useSelector, useDispatch } from "react-redux";
-// import {
-//   removeFromCart,
-//   increaseQuantity,
-//   decreaseQuantity,
-//   clearCart,
-// } from "../features/cart/cartSlice";
-
-// export default function Checkout() {
-//   const { items, totalPrice } = useSelector((state) => state.cart);
-//   const dispatch = useDispatch();
-
-//   return (
-//     <div className="p-5">
-//       <h1 className="text-2xl font-bold text-[var(--color-primary)] mb-4">
-//         Checkout
-//       </h1>
-
-//       {items.length === 0 ? (
-//         <p className="text-[var(--color-muted)] text-lg">
-//           Tu carrito está vacío 🛒
-//         </p>
-//       ) : (
-//         <>
-//           <ul className="list-none p-0">
-//             {items.map((item) => (
-//               <li
-//                 key={item.id}
-//                 className="flex items-center border-b border-gray-300 pb-2 mb-4"
-//               >
-//                 <img
-//                   src={item.image}
-//                   alt={item.title}
-//                   className="w-20 h-20 object-cover mr-4 rounded"
-//                 />
-//                 <div className="flex-1">
-//                   <h3 className="text-lg font-semibold text-[var(--color-primary)]">
-//                     {item.title}
-//                   </h3>
-//                   <p className="text-[var(--color-muted)]">
-//                     Precio unitario: ${item.price.toFixed(2)}
-//                   </p>
-//                   <p className="text-[var(--color-accent)] font-bold">
-//                     Total: ${item.totalPrice.toFixed(2)}
-//                   </p>
-//                   <div className="flex items-center gap-2 mt-2">
-//                     <button
-//                       onClick={() => dispatch(decreaseQuantity(item.id))}
-//                       className="w-8 h-8 bg-[var(--color-soft)] text-[var(--color-primary)] rounded-full font-bold hover:opacity-80 transition"
-//                     >
-//                       -
-//                     </button>
-//                     <span className="text-lg font-medium">{item.quantity}</span>
-//                     <button
-//                       onClick={() => dispatch(increaseQuantity(item.id))}
-//                       className="w-8 h-8 bg-[var(--color-soft)] text-[var(--color-primary)] rounded-full font-bold hover:opacity-80 transition"
-//                     >
-//                       +
-//                     </button>
-//                     <button
-//                       onClick={() => dispatch(removeFromCart(item.id))}
-//                       className="ml-3 bg-transparent border-none cursor-pointer text-red-600 hover:text-red-800 transition"
-//                     >
-//                       ❌
-//                     </button>
-//                   </div>
-//                 </div>
-//               </li>
-//             ))}
-//           </ul>
-
-//           <h2 className="text-xl font-bold text-[var(--color-primary)] mb-4">
-//             Total a pagar: ${totalPrice.toFixed(2)}
-//           </h2>
-
-//           <div className="flex gap-2">
-//             <button className="flex-1 py-2 text-white bg-green-600 rounded hover:bg-green-700 transition font-semibold">
-//               Confirmar compra
-//             </button>
-//             <button
-//               onClick={() => dispatch(clearCart())}
-//               className="flex-1 py-2 text-white bg-red-600 rounded hover:bg-red-700 transition font-semibold"
-//             >
-//               Vaciar carrito
-//             </button>
-//           </div>
-//         </>
-//       )}
-//     </div>
-//   );
-// }

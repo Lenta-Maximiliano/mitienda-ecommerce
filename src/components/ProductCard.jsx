@@ -13,7 +13,7 @@ export default function ProductCard({ product }) {
   const handleAddToCart = (product) => {
     if (!user) {
       alert("Debes iniciar sesión para agregar productos al carrito.");
-      navigate("/");
+      navigate("/auth/login");
       return;
     }
     dispatch(addToCart(product));
@@ -57,7 +57,7 @@ export default function ProductCard({ product }) {
       {!cartItem ? (
         <button
           onClick={() => handleAddToCart(product)}
-          className="bg-[var(--color-primary)] text-white px-4 py-2 rounded-xl font-medium hover:bg-opacity-90 transition"
+          className="bg-[var(--color-primary)] text-white px-4 py-2 rounded-xl font-medium hover:bg-opacity-90 transition hover:cursor-pointer"
         >
           Agregar al carrito
         </button>
@@ -65,14 +65,14 @@ export default function ProductCard({ product }) {
         <div className="flex items-center justify-center gap-4">
           <button
             onClick={handleDecreaseQuantity}
-            className="w-9 h-9 bg-[var(--color-soft)] text-[var(--color-primary)] rounded-full font-bold hover:opacity-80"
+            className="w-9 h-9 bg-[var(--color-soft)] text-[var(--color-primary)] rounded-full font-bold hover:opacity-80 hover:cursor-pointer"
           >
             -
           </button>
           <span className="text-lg font-medium">{cartItem.quantity}</span>
           <button
             onClick={handleIncreaseQuantity}
-            className="w-9 h-9 bg-[var(--color-soft)] text-[var(--color-primary)] rounded-full font-bold hover:opacity-80"
+            className="w-9 h-9 bg-[var(--color-soft)] text-[var(--color-primary)] rounded-full font-bold hover:opacity-80 hover:cursor-pointer"
           >
             +
           </button>
