@@ -5,7 +5,6 @@ import ProductCard from "../components/ProductCard";
 export default function Home() {
   const { data: products = [], isLoading, error } = useGetProductsQuery();
 
-  // Featured: los primeros 4 (podés cambiar por random o por lógica propia)
   const featured = products.slice(0, 4);
 
   return (
@@ -30,7 +29,6 @@ export default function Home() {
               <p className="text-[var(--color-muted)] mt-2">
                 Podés mostrar aquí un producto destacado o una promoción especial.
               </p>
-              {/* Si querés, renderizá aquí un ProductCard del producto destacado */}
             </div>
           </div>
         </section>
@@ -49,7 +47,7 @@ export default function Home() {
           ) : error ? (
             <p className="text-red-600">Error al cargar productos</p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-4">
               {featured.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}

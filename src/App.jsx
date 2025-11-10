@@ -11,17 +11,19 @@ import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div className="min-w-[350px] max-w-[1000px] mx-auto">
+    <div className="min-w-[350px] max-w-[1000px] mx-auto min-h-screen flex flex-col">
       <NavBar />
       <CartWatcher />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path="/products/:id" element={<ProductDetail />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route  path="/auth/login" element={<Login />} />
-        <Route path="/auth/register" element={<Register />} />
-      </Routes>
+      <main className="flex-1">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route  path="/auth/login" element={<Login />} />
+          <Route path="/auth/register" element={<Register />} />
+        </Routes>
+      </main>
       <Footer />
     </div>
   );

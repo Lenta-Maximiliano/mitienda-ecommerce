@@ -20,7 +20,7 @@ export default function Checkout() {
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
           {/* Productos */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="min-w-[300px] mx-auto lg:col-span-2 space-y-4 md:w-3/4 lg:w-4/4">
             {items.map((item) => (
               <div
                 key={item.id}
@@ -33,7 +33,7 @@ export default function Checkout() {
                 />
                 <div className="flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-lg sm:text-xl font-semibold text-[var(--color-primary)]">
+                    <h3 className="text-md sm:text-xl font-semibold text-[var(--color-primary)]">
                       {item.title}
                     </h3>
                     <p className="text-[var(--color-muted)] mt-1 text-sm sm:text-base">
@@ -43,7 +43,7 @@ export default function Checkout() {
                       Total: ${item.totalPrice.toFixed(2)}
                     </p>
                   </div>
-                  <div className="flex items-center gap-2 sm:gap-3 mt-3 sm:mt-4">
+                  <div className="flex items-center gap-2 sm:gap-3 mt-3 sm:mt-4 mx-auto">
                     <button
                       onClick={() => dispatch(decreaseQuantity(item.id))}
                       className="w-8 h-8 sm:w-9 sm:h-9 bg-[var(--color-soft)] text-[var(--color-primary)] rounded-full font-bold hover:opacity-80 transition hover:cursor-pointer"
@@ -72,7 +72,7 @@ export default function Checkout() {
           </div>
 
           {/* Resumen de compra */}
-          <div className="bg-white p-4 md:p-6 rounded-2xl shadow-md">
+          <div className="w-[300px] max-w-[370px] h-[300px] mx-auto bg-white p-4 md:p-6 rounded-2xl shadow-md lg:sticky top-30">
             <h2 className="text-xl md:text-2xl font-bold text-[var(--color-primary)] mb-4">
               Resumen
             </h2>

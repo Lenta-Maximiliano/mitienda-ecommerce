@@ -32,17 +32,17 @@ export default function AuthControls({ user, onLogout, isMobile = false, closeMe
     return (
       <>
         <li>
-          <Link to="/profile" onClick={() => closeMenu?.()} className="block px-4 py-2 text-[var(--color-text)] hover:text-[var(--color-primary)]">
+          <Link to="/profile" onClick={() => closeMenu?.()} className="block px-4 py-2 text-[var(--color-text)] hover:text-[var(--color-primary)] hover:bg-gray-50">
             Mi Perfil
-          </Link>
+          </Link> 
         </li>
         <li>
-          <Link to="/orders" onClick={() => closeMenu?.()} className="block px-4 py-2 text-[var(--color-text)] hover:text-[var(--color-primary)]">
+          <Link to="/orders" onClick={() => closeMenu?.()} className="block px-4 py-2 text-[var(--color-text)] hover:text-[var(--color-primary)] hover:bg-gray-50">
             Mis Pedidos
           </Link>
         </li>
         <li>
-          <button onClick={() => { closeMenu?.(); onLogout?.(); }} className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-50">
+          <button onClick={() => { closeMenu?.(); onLogout?.(); }} className="w-full text-left px-4 py-2 text-red-500 hover:bg-gray-50 hover:cursor-pointer">
             Cerrar sesión
           </button>
         </li>
@@ -68,7 +68,7 @@ export default function AuthControls({ user, onLogout, isMobile = false, closeMe
     <div className="relative">
       <button
         onClick={() => setDropdownOpen(!dropdownOpen)}
-        className="flex items-center gap-2 hover:bg-[var(--color-soft)] px-3 py-2 rounded-md transition"
+        className="flex items-center gap-2 hover:bg-[var(--color-soft)] px-3 py-2 rounded-md transition hover:cursor-pointer"
         aria-expanded={dropdownOpen}
       >
         <User className="w-5 h-5 text-[var(--color-primary)]" />
@@ -84,7 +84,7 @@ export default function AuthControls({ user, onLogout, isMobile = false, closeMe
           <Link to="/orders" onClick={() => setDropdownOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
             Mis Pedidos
           </Link>
-          <button onClick={() => { setDropdownOpen(false); onLogout?.(); }} className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-50">
+          <button onClick={() => { setDropdownOpen(false); onLogout?.(); }} className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-50 hover:cursor-pointer">
             Cerrar sesión
           </button>
         </div>
