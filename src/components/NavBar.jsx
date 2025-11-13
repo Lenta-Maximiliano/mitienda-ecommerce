@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../features/auth/authSlice";
+import { useSelector } from "react-redux";
+import { doSignOut } from "../services/authService";
 import NavLinks from "./NavLinks";
 import CartButton from "./CartButton";
 import AuthControls from "./AuthControls";
@@ -10,11 +10,14 @@ import AuthControls from "./AuthControls";
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const user = useSelector((state) => state.auth.user);
-  const dispatch = useDispatch();
 
-  const handleLogout = () => {
-    dispatch(logout());
-    setIsOpen(false);
+  const handleLogout = async () => {
+    try {
+      await doSignOut();
+      setIsOpen(false);
+    } catch (err) {
+      console.error("Error al cerrar sesión:", err);
+    }
   };
 
   return (

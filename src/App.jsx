@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import AuthListener from "./components/AuthListener";
 import NavBar from "./components/NavBar";
 import CartWatcher from "./components/CartWatcher"; 
 import Home from "./pages/Home";
@@ -12,6 +13,7 @@ import Footer from "./components/Footer";
 export default function App() {
   return (
     <div className="min-w-[350px] max-w-[1000px] mx-auto min-h-screen flex flex-col">
+      <AuthListener />
       <NavBar />
       <CartWatcher />
       <main className="flex-1">

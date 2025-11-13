@@ -1,5 +1,5 @@
 import { auth } from "../firebase/firebaseConfig";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 // Registro
 export const register = async (email, password) => {
@@ -11,4 +11,8 @@ export const register = async (email, password) => {
 export const login = async (email, password) => {
   const userCredential = await signInWithEmailAndPassword(auth, email, password);
   return userCredential.user;
+};
+
+export const doSignOut = async () => {
+  await signOut(auth);
 };

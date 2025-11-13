@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, increaseQuantity, decreaseQuantity } from "../features/cart/cartSlice";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { addToCart, increaseQuantity, decreaseQuantity } from "../features/cart/cartSlice";
 
 export default function ProductCard({ product }) {
   const dispatch = useDispatch();
@@ -9,14 +11,39 @@ export default function ProductCard({ product }) {
   );
   const navigate = useNavigate();
   const user = useSelector((state) => state.auth.user);
+  const MySwal = withReactContent(Swal);
 
   const handleAddToCart = (product) => {
     if (!user) {
-      alert("Debes iniciar sesión para agregar productos al carrito.");
-      navigate("/auth/login");
+      MySwal.fire({
+        title: "Debes iniciar sesión",
+        text: "Necesitás iniciar sesión para agregar productos al carrito.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Ir a iniciar sesión",
+        cancelButtonText: "Cancelar",
+        confirmButtonColor: "var(--color-primary)",
+        cancelButtonColor: "#d33",
+      }).then((result) => {
+        if (result.isConfirmed) navigate("/auth/login");
+      });
       return;
     }
+
     dispatch(addToCart(product));
+    MySwal.fire({
+      toast: true,
+      position: "top-end",
+      icon: "success",
+      title: "Producto agregado",
+      showConfirmButton: false,
+      timer: 1000,
+      width: "auto",
+      customClass: {
+        popup: "text-xs p-2 rounded-lg shadow-sm",
+        title: "text-xs font-medium",
+      },
+    });
   };
 
   const handleIncreaseQuantity = () => {
