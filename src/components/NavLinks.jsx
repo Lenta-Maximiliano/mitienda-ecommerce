@@ -11,7 +11,7 @@ export default function NavLinks({ isMobile = false, closeMenu, user, onLogout }
   ];
 
   return (
-    <ul className={`${isMobile ? "flex flex-col gap-3 p-4" : "flex items-center gap-8"} font-medium`}>
+    <ul className={`${isMobile ? "flex flex-col gap-3 p-4" : "flex items-center gap-8 mx-[15px]"} font-medium`}>
       {links.map((link) => {
         const isActive = location.pathname === link.path;
         return (

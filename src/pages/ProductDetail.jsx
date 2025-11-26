@@ -81,7 +81,7 @@ export default function ProductDetail() {
         ) : (
           <button
             onClick={() => handleAddToCart(product)}
-            className="bg-[var(--color-primary)] text-white font-medium py-3 px-6 rounded-xl hover:bg-opacity-90 transition"
+            className="bg-[var(--color-primary)] text-white font-medium py-3 px-6 rounded-xl hover:bg-opacity-90 transition hover:cursor-pointer"
           >
             Agregar al carrito
           </button>

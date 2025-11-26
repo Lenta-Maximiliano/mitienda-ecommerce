@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState} from "react";
 import { useSelector } from "react-redux";
 import { doSignOut } from "../services/authService";
 import NavLinks from "./NavLinks";
 import CartButton from "./CartButton";
 import AuthControls from "./AuthControls";
+import SearchBar from "./SearchBar";
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,6 +44,12 @@ export default function NavBar() {
           <div className="md:hidden">
             <CartButton />
           </div>
+
+          {/* Mostrar siempre el buscador en desktop y ocultarlo en mobile: */}
+          <div className="hidden md:block max-w-[170px]">
+            <SearchBar />
+          </div>
+          
           {user && <div className="hidden md:block"><CartButton /></div>}
           <div className="hidden md:block">
             <AuthControls user={user} onLogout={handleLogout} />
@@ -53,7 +60,21 @@ export default function NavBar() {
       {/* Mobile menu */}
       {isOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 shadow-md">
-          <NavLinks isMobile={true} closeMenu={() => setIsOpen(false)} user={user} onLogout={handleLogout} />
+          {/* Search en mobile: ocupando ancho completo */}
+          <div className="mb-3">
+            <SearchBar 
+              isMobile={true} 
+              closeMenu={() => setIsOpen(false)} 
+            />
+          </div>
+
+          {/* Links + auth (NavLinks renderiza auth controls si isMobile) */}
+          <NavLinks 
+            isMobile={true} 
+            closeMenu={() => setIsOpen(false)} 
+            user={user} 
+            onLogout={handleLogout} 
+          />
         </div>
       )}
     </nav>
