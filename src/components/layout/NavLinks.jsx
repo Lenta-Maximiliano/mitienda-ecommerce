@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import AuthControls from "./AuthControls";
+import AuthControls from "../auth/AuthControls";
 
 export default function NavLinks({ isMobile = false, closeMenu, user, onLogout }) {
   const location = useLocation();

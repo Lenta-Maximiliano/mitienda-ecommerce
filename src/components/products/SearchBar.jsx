@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useGetProductsQuery } from "../services/productsApi";
+import { useGetProductsQuery } from "../../services/productsApi";
 import { useNavigate } from "react-router-dom";
 import { Search } from "lucide-react";
 

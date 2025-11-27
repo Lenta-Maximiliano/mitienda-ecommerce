@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState} from "react";
 import { useSelector } from "react-redux";
-import { doSignOut } from "../services/authService";
+import { doSignOut } from "../../services/authService";
 import NavLinks from "./NavLinks";
-import CartButton from "./CartButton";
-import AuthControls from "./AuthControls";
-import SearchBar from "./SearchBar";
+import CartButton from "../cart/CartButton";
+import AuthControls from "../auth/AuthControls";
+import SearchBar from "../products/SearchBar";
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);

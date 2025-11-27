@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { register } from "../../services/authService";
-import AuthForm from "../../components/AuthForm";
+import AuthForm from "../../components/auth/AuthForm";
 
 export default function Register() {
   return (

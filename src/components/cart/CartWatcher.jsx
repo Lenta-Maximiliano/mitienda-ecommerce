@@ -1,7 +1,7 @@
 import { useEffect, useRef  } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { persistCart, fetchCart, clearCart } from "../features/cart/cartSlice";
-import { deleteCart } from "../services/cartService";
+import { persistCart, fetchCart, clearCart } from "../../features/cart/cartSlice";
+import { deleteCart } from "../../services/cartService";
 
 export default function CartWatcher() {
   const dispatch = useDispatch();

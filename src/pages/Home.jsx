@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useGetProductsQuery } from "../services/productsApi";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/products/ProductCard";
 
 export default function Home() {
   const { data: products = [], isLoading, error } = useGetProductsQuery();

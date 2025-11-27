@@ -1,14 +1,14 @@
 import { Routes, Route } from "react-router-dom";
-import AuthListener from "./components/AuthListener";
-import NavBar from "./components/NavBar";
-import CartWatcher from "./components/CartWatcher"; 
+import AuthListener from "./components/auth/AuthListener";
+import NavBar from "./components/layout/NavBar";
+import CartWatcher from "./components/cart/CartWatcher"; 
 import Home from "./pages/Home";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetail from "./pages/ProductDetail";
 import Checkout from "./pages/Checkout";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
-import Footer from "./components/Footer";
+import Footer from "./components/layout/Footer";
 
 export default function App() {
   return (

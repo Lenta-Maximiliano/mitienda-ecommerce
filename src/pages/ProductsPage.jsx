@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useGetProductsQuery } from "../services/productsApi";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/products/ProductCard";
 
 export default function ProductsPage() {
   const { data: products = [], error, isLoading } = useGetProductsQuery();
