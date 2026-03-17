@@ -1,4 +1,4 @@
-import { db } from "../firebase/firebaseConfig";
+import { db } from "../../firebase/firebaseConfig";
 import { doc, setDoc, getDoc, deleteDoc } from "firebase/firestore";
 
 // Guardar carrito de un usuario

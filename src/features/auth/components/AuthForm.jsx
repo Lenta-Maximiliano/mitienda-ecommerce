@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { setUser } from "../../features/auth/authSlice";
+import { setUser } from "../authSlice";
 
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
