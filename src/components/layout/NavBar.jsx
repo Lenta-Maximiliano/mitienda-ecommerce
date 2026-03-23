@@ -2,16 +2,29 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState} from "react";
 import { useSelector } from "react-redux";
-import { doSignOut } from "../../services/authService";
+import { doSignOut } from "../../features/auth/authService";
 import NavLinks from "./NavLinks";
-import CartButton from "../cart/CartButton";
-import AuthControls from "../auth/AuthControls";
-import SearchBar from "../products/SearchBar";
+import CartButton from "../../features/cart/components/CartButton";
+import AuthControlsDesktop from "../../features/auth/components/AuthControlsDesktop";
+import SearchBar from "../../features/products/components/SearchBar";
 
 export default function NavBar() {
+
+  /**
+   * Estado local para controlar menú mobile (hamburger)
+   */
   const [isOpen, setIsOpen] = useState(false);
+
+  /**
+   * Usuario desde Redux (estado global)
+   */
   const user = useSelector((state) => state.auth.user);
 
+  /**
+   * Maneja logout del usuario
+   * - Llama al servicio de Firebase
+   * - Cierra el menú mobile si está abierto
+   */
   const handleLogout = async () => {
     try {
       await doSignOut();
@@ -22,45 +35,70 @@ export default function NavBar() {
   };
 
   return (
+    /**
+     * Navbar sticky (queda fija arriba)
+     */
     <nav className="bg-white shadow-sm sticky top-0 z-50">
+
+      {/* Contenedor principal */}
       <div className="mx-auto px-4 py-3 flex items-center justify-between">
-        {/* Logo */}
+
+        {/* Logo / navegación a home */}
         <Link to="/" className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-[display] font-semibold text-[var(--color-primary)] hover:opacity-80 transition-opacity">
           MiTienda
         </Link>
 
-        {/* Mobile hamburger */}
-        <button aria-label="Abrir menú" aria-expanded={isOpen} className="md:hidden p-2 text-[var(--color-primary)]" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X className="w-6 h-6 hover:cursor-pointer" /> : <Menu className="w-6 h-6 hover:cursor-pointer" />}
+        {/* Botón hamburguesa (solo mobile) */}
+        <button 
+          aria-label="Abrir menú" 
+          aria-expanded={isOpen} 
+          className="md:hidden p-2 text-[var(--color-primary)]" 
+          onClick={() => setIsOpen(prev => !prev)}
+          >
+            {isOpen ? (
+              <X className="w-6 h-6 hover:cursor-pointer" /> 
+            ) : (
+              <Menu className="w-6 h-6 hover:cursor-pointer" />
+            )}
         </button>
 
-        {/* Desktop links */}
+        {/* Links de navegación (desktop) */}
         <div className="hidden md:flex items-center gap-8">
-          <NavLinks user={user} />
+          <NavLinks />
         </div>
 
-        {/* Cart + Auth (desktop) */}
+        {/* Acciones (carrito, búsqueda, auth) */}
         <div className="flex items-center gap-4">
+
+          {/* Carrito en mobile */}
           <div className="md:hidden">
             <CartButton />
           </div>
 
-          {/* Mostrar siempre el buscador en desktop y ocultarlo en mobile: */}
+          {/* Buscador (solo desktop) */}
           <div className="hidden md:block max-w-[170px]">
             <SearchBar />
           </div>
           
-          {user && <div className="hidden md:block"><CartButton /></div>}
+          {/* Carrito en desktop (solo si hay usuario) */}
+          {user && 
+            <div className="hidden md:block">
+              <CartButton />
+            </div>
+          }
+          
+          {/* Controles de autenticación */}
           <div className="hidden md:block">
-            <AuthControls user={user} onLogout={handleLogout} />
+            <AuthControlsDesktop user={user} onLogout={handleLogout} />
           </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Menú mobile desplegable */}
       {isOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 shadow-md">
-          {/* Search en mobile: ocupando ancho completo */}
+
+          {/* Menú mobile desplegable */}
           <div className="mb-3">
             <SearchBar 
               isMobile={true} 
@@ -68,7 +106,7 @@ export default function NavBar() {
             />
           </div>
 
-          {/* Links + auth (NavLinks renderiza auth controls si isMobile) */}
+          {/* Links + autenticación */}
           <NavLinks 
             isMobile={true} 
             closeMenu={() => setIsOpen(false)} 

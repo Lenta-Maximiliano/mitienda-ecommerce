@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import AuthListener from "./components/auth/AuthListener";
+import AuthListener from "./features/auth/components/AuthListener";
 import NavBar from "./components/layout/NavBar";
-import CartWatcher from "./components/cart/CartWatcher"; 
+import CartWatcher from "./features/cart/components/CartWatcher"; 
 import Home from "./pages/Home";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetail from "./pages/ProductDetail";

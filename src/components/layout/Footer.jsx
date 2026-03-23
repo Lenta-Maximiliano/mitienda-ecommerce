@@ -1,20 +1,36 @@
-
 export default function Footer() {
   return (
+     /**
+     * Footer principal de la aplicación
+     *
+     * Contiene:
+     * - Identidad de la marca
+     * - Links a redes sociales
+     * - Copyright dinámico
+     */
     <footer className="bg-[var(--color-soft)] border-t border-gray-200 text-[var(--color-text)] mt-10">
+
+      {/* Contenedor principal con layout responsive */}
       <div className="max-w-6xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Logo / Nombre */}
+        
+        {/* Sección: Marca / descripción */}
         <div className="flex flex-col items-center md:items-start">
-          <h2 className="text-xl font-semibold text-[var(--color-primary)]">MiTienda</h2>
+          <h2 className="text-xl font-semibold text-[var(--color-primary)]">
+            MiTienda
+          </h2>
+          
           <p className="mt-2 text-sm text-gray-600 text-center md:text-left">
             Productos seleccionados para vos. Calidad y atención personalizada.
           </p>
         </div>
 
-        {/* Seguinos */}
+         {/* Sección: Redes sociales */}
         <div className="flex flex-col items-center md:items-end">
           <h3 className="font-semibold mb-2">Seguinos</h3>
+
+          {/* Contenedor de íconos */}
           <div className="flex gap-3 md:justify-end">
+
             {/* Facebook (SVG de SimpleIcons) */}
             <a href="#" aria-label="Facebook" className="hover:text-[var(--color-primary)]">
               <svg role="img" viewBox="0 0 24 24" className="w-5 h-5" xmlns="http://www.w3.org/2000/svg">
@@ -42,6 +58,7 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Copyright dinámico */}
       <div className="border-t border-gray-200 text-center py-4 text-sm text-gray-500">
         © {new Date().getFullYear()} MiTienda. Todos los derechos reservados.
       </div>
