@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { auth } from "../../../firebase/firebaseConfig";
-import { setUser, logout } from "../authSlice";
+import { setUser, logout } from "../store/authSlice";
 
-/** AuthListener
+/** useAuthListener
  *
- * Componente encargado de sincronizar el estado de autenticación
+ * Hook encargado de sincronizar el estado de autenticación
  * de Firebase con el estado global de Redux.
  *
  * Responsabilidades:
@@ -14,9 +14,8 @@ import { setUser, logout } from "../authSlice";
  * - Guardar usuario en Redux cuando está autenticado
  * - Limpiar estado cuando no hay usuario
  *
- * No renderiza UI → solo maneja efectos secundarios
  */
-export default function AuthListener() {
+export const useAuthListener = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -50,10 +49,7 @@ export default function AuthListener() {
     });
 
     // Cleanup: Evita memory leaks al desmontar el componente
-
     return () => unsubscribe();
 
   }, [dispatch]);
-
-  return null; // Componente sin UI
 }

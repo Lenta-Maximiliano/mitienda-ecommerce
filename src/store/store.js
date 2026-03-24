@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { productsApi } from "../features/products/productsApi";
-import cartReducer from "../features/cart/cartSlice";
-import authReducer from "../features/auth/authSlice";
+import cartReducer from "../features/cart/store/cartSlice";
+import authReducer from "../features/auth/store/authSlice";
 
 /** Configuración global del store de Redux.
  *

@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import AuthListener from "./features/auth/components/AuthListener";
+import { useAuthListener } from "./features/auth/hooks/useAuthListener";
+import { useCartWatcher } from "./features/cart/hooks/useCartWatcher";
 import NavBar from "./components/layout/NavBar";
-import CartWatcher from "./features/cart/components/CartWatcher"; 
 import Home from "./pages/Home";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetail from "./pages/ProductDetail";
@@ -11,11 +11,13 @@ import Register from "./pages/auth/Register";
 import Footer from "./components/layout/Footer";
 
 export default function App() {
+
+  useAuthListener();
+  useCartWatcher();
+  
   return (
     <div className="min-w-[350px] max-w-[1000px] mx-auto min-h-screen flex flex-col">
-      <AuthListener />
       <NavBar />
-      <CartWatcher />
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />

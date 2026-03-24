@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { login } from "../../features/auth/authService";
+import { login } from "../../features/auth/services/authService";
 import AuthForm from "../../features/auth/components/AuthForm";
 
 /** Login Page

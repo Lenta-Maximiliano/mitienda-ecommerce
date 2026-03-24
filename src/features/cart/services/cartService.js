@@ -1,4 +1,4 @@
-import { db } from "../../firebase/firebaseConfig";
+import { db } from "../../../firebase/firebaseConfig";
 import { doc, setDoc, getDoc, deleteDoc, serverTimestamp  } from "firebase/firestore";
 
 /** Guarda o actualiza el carrito de un usuario en Firestore

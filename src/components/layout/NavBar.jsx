@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState} from "react";
 import { useSelector } from "react-redux";
-import { doSignOut } from "../../features/auth/authService";
+import { doSignOut } from "../../features/auth/services/authService";
 import NavLinks from "./NavLinks";
 import CartButton from "../../features/cart/components/CartButton";
 import AuthControlsDesktop from "../../features/auth/components/AuthControlsDesktop";

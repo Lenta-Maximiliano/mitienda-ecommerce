@@ -5,7 +5,7 @@ import {
   addToCart,
   increaseQuantity,
   decreaseQuantity,
-} from "../features/cart/cartSlice";
+} from "../features/cart/store/cartSlice";
 
 /** ProductDetail
  *

@@ -4,7 +4,7 @@ import {
   increaseQuantity,
   decreaseQuantity,
   clearCart,
-} from "../features/cart/cartSlice";
+} from "../features/cart/store/cartSlice";
 
 /**
  * Checkout
