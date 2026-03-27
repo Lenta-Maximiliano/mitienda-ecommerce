@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo, useId } from "react";
-import { useGetProductsQuery } from "../productsApi";
+import { useGetProductsQuery } from "../services/productsApi";
 import { useNavigate } from "react-router-dom";
 import { Search } from "lucide-react";
 
@@ -21,7 +21,6 @@ export default function SearchBar({ isMobile = false, closeMenu }) {
   // Estado local
   const [q, setQ] = useState(""); // texto ingresado
 
-  // const [results, setResults] = useState([]); // resultados filtrados
   const [open, setOpen] = useState(false); // estado del dropdown
 
   const navigate = useNavigate();

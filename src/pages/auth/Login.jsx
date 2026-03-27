@@ -23,7 +23,9 @@ export default function Login() {
       <div className="w-full max-w-md bg-white rounded-2xl shadow-md p-6">
 
         {/* Título */}
-        <h1 className="text-2xl font-semibold text-[var(--color-primary)] mb-4">Iniciar sesión</h1>
+        <h1 className="text-2xl font-semibold text-[var(--color-primary)] mb-4">
+          Iniciar sesión
+        </h1>
 
         {/* 
           Formulario reutilizable

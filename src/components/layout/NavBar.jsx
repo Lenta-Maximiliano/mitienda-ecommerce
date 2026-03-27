@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { useState} from "react";
+import { useState, useCallback} from "react";
 import { useSelector } from "react-redux";
 import { doSignOut } from "../../features/auth/services/authService";
 import NavLinks from "./NavLinks";
@@ -10,41 +10,41 @@ import SearchBar from "../../features/products/components/SearchBar";
 
 export default function NavBar() {
 
-  /**
-   * Estado local para controlar menú mobile (hamburger)
-   */
+  // Estado local para controlar menú mobile (hamburger)
   const [isOpen, setIsOpen] = useState(false);
 
-  /**
-   * Usuario desde Redux (estado global)
-   */
+  // Usuario desde Redux (estado global)
   const user = useSelector((state) => state.auth.user);
 
-  /**
-   * Maneja logout del usuario
+  const closeMenu = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
+  /** Maneja logout del usuario
    * - Llama al servicio de Firebase
    * - Cierra el menú mobile si está abierto
    */
   const handleLogout = async () => {
     try {
       await doSignOut();
-      setIsOpen(false);
+      closeMenu();
     } catch (err) {
       console.error("Error al cerrar sesión:", err);
     }
   };
 
   return (
-    /**
-     * Navbar sticky (queda fija arriba)
-     */
+    // Navbar sticky (queda fija arriba)
     <nav className="bg-white shadow-sm sticky top-0 z-50">
 
       {/* Contenedor principal */}
       <div className="mx-auto px-4 py-3 flex items-center justify-between">
 
         {/* Logo / navegación a home */}
-        <Link to="/" className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-[display] font-semibold text-[var(--color-primary)] hover:opacity-80 transition-opacity">
+        <Link 
+          to="/" 
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-[display] font-semibold text-[var(--color-primary)] hover:opacity-80 transition-opacity"
+        >
           MiTienda
         </Link>
 
@@ -54,12 +54,12 @@ export default function NavBar() {
           aria-expanded={isOpen} 
           className="md:hidden p-2 text-[var(--color-primary)]" 
           onClick={() => setIsOpen(prev => !prev)}
-          >
-            {isOpen ? (
-              <X className="w-6 h-6 hover:cursor-pointer" /> 
-            ) : (
-              <Menu className="w-6 h-6 hover:cursor-pointer" />
-            )}
+        >
+          {isOpen ? (
+            <X className="w-6 h-6 hover:cursor-pointer" /> 
+          ) : (
+            <Menu className="w-6 h-6 hover:cursor-pointer" />
+          )}
         </button>
 
         {/* Links de navegación (desktop) */}
@@ -91,7 +91,9 @@ export default function NavBar() {
           <div className="hidden md:block">
             <AuthControlsDesktop user={user} onLogout={handleLogout} />
           </div>
+          
         </div>
+
       </div>
 
       {/* Menú mobile desplegable */}
@@ -102,14 +104,14 @@ export default function NavBar() {
           <div className="mb-3">
             <SearchBar 
               isMobile={true} 
-              closeMenu={() => setIsOpen(false)} 
+              closeMenu={closeMenu} 
             />
           </div>
 
           {/* Links + autenticación */}
           <NavLinks 
             isMobile={true} 
-            closeMenu={() => setIsOpen(false)} 
+            closeMenu={closeMenu} 
             user={user} 
             onLogout={handleLogout} 
           />

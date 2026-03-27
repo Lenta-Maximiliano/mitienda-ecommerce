@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useGetProductByIdQuery } from "../features/products/productsApi";
+import { useGetProductByIdQuery } from "../features/products/services/productsApi";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,

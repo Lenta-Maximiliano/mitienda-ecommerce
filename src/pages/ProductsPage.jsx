@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { useGetProductsQuery } from "../features/products/productsApi";
+import { useGetProductsQuery } from "../features/products/services/productsApi";
 import ProductCard from "../features/products/components/ProductCard";
 
 /** Página de listado de productos.

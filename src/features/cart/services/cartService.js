@@ -17,22 +17,13 @@ export const saveCart = async (userId, cartItems) => {
   const cartRef = doc(db, "carts", userId);
 
   try {
-    /**
-     * Si hay items → guardar/actualizar documento
-     * Si no hay items → eliminar carrito
-     */
-    if(cartItems.length > 0){
-
-      await setDoc(cartRef, {
-        items: cartItems,
-        updatedAt: serverTimestamp()
-      });
-      console.log("✅ Carrito guardado/actualizado en Firebase");
-    }
-    else{
-      await deleteDoc(cartRef);
-      console.log("🗑️ Carrito vacío eliminado de Firebase");
-    }
+    await setDoc(cartRef, {
+      items: cartItems,
+      updatedAt: serverTimestamp()
+    });
+    
+    console.log("✅ Carrito guardado/actualizado en Firebase");
+    
   } catch (error) {
 
     /** Manejo de errores

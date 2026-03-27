@@ -67,7 +67,5 @@ export const useCartWatcher = () => {
       }
     }
   }, [cart, user, dispatch]);
-
-  return null; // no renderiza nada en pantalla
 }
 

@@ -15,8 +15,7 @@ import withReactContent from "sweetalert2-react-content";
  * - Redirigir tras autenticación exitosa
  * 
  * IMPORTANTE:
- * - NO maneja estado global (Redux)
- * - Firebase es la fuente de verdad → AuthListener se encarga de sincronizar el usuario
+ * - Firebase es la fuente de verdad → useAuthListener se encarga de sincronizar el usuario
  *
  * @param {Function} action - Función async (login o register)
  * @param {string} buttonText - Texto del botón (ej: "Ingresar", "Registrarse")
@@ -45,13 +44,13 @@ export default function AuthForm({ action, buttonText, formId }) {
     setFormValues((prev) => ({ ...prev, [name]: value }));
   };
 
-   /** Maneja envío del formulario
+  /** Maneja envío del formulario
    *
    * Flujo:
    * 1. Previene submit por defecto
    * 2. Ejecuta login/register (Firebase)
    * 3. Firebase actualiza sesión interna
-   * 4. AuthListener detecta cambio → actualiza Redux
+   * 4. useAuthListener detecta cambio → actualiza Redux
    * 5. Se muestra feedback al usuario (toast)
    * 6. Redirige al usuario
    */
@@ -92,7 +91,7 @@ export default function AuthForm({ action, buttonText, formId }) {
        * 
        * Nota:
        * El estado del usuario ya fue sincronizado
-       * automáticamente por AuthListener
+       * automáticamente por useAuthListener
        */
       navigate("/products");
 

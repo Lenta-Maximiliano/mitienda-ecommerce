@@ -1,8 +1,7 @@
 import { NavLink } from "react-router-dom";
 import AuthControlsMobile from "../../features/auth/components/AuthControlsMobile";
 
-/**
- * NavLinks
+/** NavLinks
  *
  * Componente de navegación principal.
  *
@@ -20,20 +19,14 @@ import AuthControlsMobile from "../../features/auth/components/AuthControlsMobil
  */
 export default function NavLinks({ isMobile = false, closeMenu, user, onLogout }) {
 
-  /**
-   * Definición de links
-   * Estructura escalable y mantenible
-   */
+  // Definición de links. (Estructura escalable y mantenible)
   const links = [
     { name: "Inicio", path: "/" },
     { name: "Productos", path: "/products" },
     { name: "Checkout", path: "/checkout" },
   ];
 
-  /**
-   * Handler de navegación
-   * - Solo ejecuta lógica en mobile
-   */
+  // Handler de navegación. (Solo ejecuta lógica en mobile)
   const handleClick = () => {
     if (isMobile) closeMenu?.();
   };
@@ -57,17 +50,9 @@ export default function NavLinks({ isMobile = false, closeMenu, user, onLogout }
             to={link.path}
             onClick={handleClick}
 
-            /**
-             * end:
-             * - Evita que "/" esté activo en todas las rutas
-             * - Solo aplica match exacto para la home
-             */
+            //end: Evita que "/" esté activo en todas las rutas. (Solo aplica match exacto para la home)
             end={link.path === "/"}
 
-            /**
-             * className dinámico provisto por NavLink
-             * Recibe { isActive } automáticamente
-             */
             className={({ isActive }) => `
               block transition-colors
               ${isActive

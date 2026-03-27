@@ -1,7 +1,6 @@
 export default function Footer() {
   return (
-     /**
-     * Footer principal de la aplicación
+     /** Footer principal de la aplicación
      *
      * Contiene:
      * - Identidad de la marca
